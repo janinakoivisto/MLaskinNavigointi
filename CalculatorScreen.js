@@ -13,6 +13,13 @@ const CalculatorScreen = ({ navigation }) => {
     setResult(`Result: ${sum.toString()}`);
     setHistory([...history, newCalculation]);
   };
+
+  const handleSubtract = () => {
+    const sum = parseInt(num1) - parseInt(num2);
+    const newCalculation = `${num1} - ${num2} = ${sum}`;
+    setResult(`Result: ${sum.toString()}`);
+    setHistory([...history, newCalculation]);
+  };
   
 
   const handleReset = () => {
@@ -38,7 +45,8 @@ const CalculatorScreen = ({ navigation }) => {
         value={num2}
         onChangeText={(text) => setNum2(text)}
       />
-      <Button title="Add" onPress={handleAdd} />
+      <Button title="+" onPress={handleAdd} />
+      <Button title="-" onPress={handleSubtract} />
       <Button title="Reset" onPress={handleReset} />
       <Text style={styles.result}>{result}</Text>
       <Button title="View History" onPress={() => navigation.navigate('History', { history })} />
